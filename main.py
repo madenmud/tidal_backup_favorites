@@ -52,8 +52,12 @@ def restore(session, filename):
                 print(f'Album {a["name"]} added as favorite')
             except:
                 pass
-        #for a in tidal_favorites['playlists']:
-        #     session.user.favorites.add_playlist(a['id'])
+        for a in tidal_favorites['playlists']:
+            try:
+                session.user.favorites.add_playlist(a['id'])
+                print(f'playlists {a["name"]} added as favorite')
+            except:
+                pass
 
 
 def parse_args(args):
