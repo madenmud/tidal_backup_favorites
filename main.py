@@ -81,7 +81,7 @@ def parse_args(args):
 def main(args):
     args_parsed = parse_args(args)
 
-    session = tidalapi.Session()
+    session = tidalapi.Session(tidalapi.Config(item_limit=10000))
 
     if args_parsed.ini is not None:
         config = ConfigParser()
