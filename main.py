@@ -6,7 +6,10 @@ import json
 import sys
 
 import tidalapi
+import datetime
 
+def get_timestamp():
+    return datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
 def backup(session, filename):
     tidal_favorites = dict(albums=[], artists=[], tracks=[], playlists=[])
@@ -113,12 +116,15 @@ def main(args):
         print(f'refresh_token = {session.refresh_token}')
         print()
 
-
     if args_parsed.backup:
-        backup(session, args_parsed.filename or 'tidal_favorites.json')
-    if args_parsed.restore:
-        restore(session, args_parsed.filename or 'tidal_favorites.json')
+        timestamp = get_timestamp()
+        filename = args_parsed.filename or f'tidal_favorites_{timestamp}.json'
+        backup(session, filename)
 
+    if args_parsed.restore:
+        timestamp = get_timestamp()
+        filename = args_parsed.filename or f'tidal_favorites_{timestamp}.json'
+        restore(session, filename)
 
 if __name__ == '__main__':
     main(sys.argv[1:])
