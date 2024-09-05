@@ -9,7 +9,7 @@ import tidalapi
 import datetime
 
 def get_timestamp():
-    return datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    return datetime.datetime.now().strftime("%Y%m%d")
 
 def backup(session, filename):
     tidal_favorites = dict(albums=[], artists=[], tracks=[], playlists=[])
