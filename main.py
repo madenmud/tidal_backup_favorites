@@ -9,7 +9,9 @@ import tidalapi
 import datetime
 
 def get_timestamp():
-    return datetime.datetime.now().strftime("%Y%m%d")
+    if not hasattr(get_timestamp, "cached_timestamp"):
+        get_timestamp.cached_timestamp = datetime.datetime.now().strftime("%Y%m%d%hh%mm%ss")
+    return get_timestamp.cached_timestamp
 
 def backup(session, filename):
     tidal_favorites = dict(albums=[], artists=[], tracks=[], playlists=[])
