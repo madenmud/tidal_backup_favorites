@@ -10,7 +10,7 @@ import datetime
 
 def get_timestamp():
     if not hasattr(get_timestamp, "cached_timestamp"):
-        get_timestamp.cached_timestamp = datetime.datetime.now().strftime("%Y%m%d%hh%mm%ss")
+        get_timestamp.cached_timestamp = datetime.datetime.now().strftime("%Y%m%d")
     return get_timestamp.cached_timestamp
 
 def backup(session, filename):
